@@ -1,0 +1,31 @@
+.image-scroller-container .title {
+  text-align: center;
+  opacity: 0.8;
+  font-weight: 100;
+  letter-spacing: 0.5rem;
+  margin: 0.2vw 0;
+  box-shadow: 3px 0 3px 0 rgba(255, 255, 255, 1);
+}
+.image-scroller {
+  margin: 1rem 0;
+  height: 70vh;
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.image-scroller::-webkit-scrollbar {
+  display: none;
+}
+.scroll-image {
+  flex: 0 0 auto;
+  width: 20vw;
+  height: auto;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  object-fit: cover;
+}
+
+.scroll-image:hover {
+  transform: scale(1.1);
+}
