@@ -13,7 +13,17 @@ import img9 from "../assets/images/ethnic blue.png";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const images = [img1, img2, img3];
-  const collectionImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+  const collectionImages = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+  ];
 
   const navigate = useNavigate();
   return (
@@ -23,6 +33,7 @@ const Home = () => {
       <ImageScroller
         images={collectionImages}
         onImageClick={function (image: string): void {
+          console.log(image);
           navigate("/shop");
         }}
         title="TOP SELLING"
