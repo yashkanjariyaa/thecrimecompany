@@ -1,6 +1,7 @@
 .nav-container{
     display: flex;
     justify-content: center;
+    align-items: center;
     z-index: 1;
     font-size: 0.8rem;
     font-weight: 100;
@@ -9,6 +10,18 @@
 .nav-container .logo{
     position: absolute;
     left: 1rem;
+}
+.nav-container .cart{
+    position: absolute;
+    right: 4rem;
+    font-size: 1.2rem;
+    /* margin: 0.8rem 0; */
+}
+.nav-container .location{
+    position: absolute;
+    right: 1rem;
+    font-size: 1.2rem;
+    /* margin: 1rem 0; */
 }
 .nav{
     display: flex;

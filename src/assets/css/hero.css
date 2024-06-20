@@ -3,8 +3,12 @@
   flex-direction: column;
   backdrop-filter: blur(25px) brightness(0.8);
   height: 88vh;
+  background: url("../images/hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
-.hero .head {
+.hero-head {
   text-align: center;
   opacity: 0.8;
   font-weight: 100;
@@ -148,23 +152,29 @@ button.button {
   box-shadow: 3px 0 3px 0 rgba(255, 255, 255, 1);
   padding: 0 1rem;
 }
-/* blobs */
-.blob{
-  position: absolute;
-  border-radius: 50%;
-  z-index: -1;
+.create{
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
-#blob1{
-  background:radial-gradient(circle, rgba(64,0,255,1) 4%, rgba(136,0,255,1) 48%, rgba(255,0,155,1) 100%);
-  height: 12rem;
-  width: 12rem;
-  top: 7vh;
-  left: 5vw;
+.create .text{
+  font-style: normal;
 }
-#blob2{
-  background: radial-gradient(circle, rgba(255,0,35,1) 0%, rgba(226,0,255,1) 64%, rgba(0,9,255,1) 100%);
-  height: 7rem;
-  width: 7rem;
-  bottom: 20vh;
-  left: 35vw;
+.create .link{
+  margin: 2vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vh;
+  width: 8vw;
+  backdrop-filter: blur(5px);
+  border: white solid 1px;
+}
+.create a{
+  text-decoration: none;
+  color: white;
+}
+.create .link:hover{
+  background-color: #ffffff21;
 }

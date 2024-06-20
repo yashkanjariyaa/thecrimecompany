@@ -1,4 +1,5 @@
 import "../assets/css/hero.css";
+import { Link } from "react-router-dom";
 // import Carousel from "./Carousel.tsx";
 import img1 from "../assets/images/img1.jpeg";
 import img2 from "../assets/images/img2.jpeg";
@@ -6,12 +7,9 @@ import img2 from "../assets/images/img2.jpeg";
 const Hero = () => {
   return (
     <>
+      <div className="hero-head">THE CRIME COMPANY</div>
       {/* hero section */}
-      <div className="blob" id="blob1"></div>
-      <div className="blob" id="blob2"></div>
-      <div className="blob" id="blob3"></div>
       <div className="hero">
-        <div className="head">THE CRIME COMPANY</div>
         {/* Name, Call to action and the images */}
         <div className="lower-container">
           <div className="hero-intro">
@@ -43,6 +41,12 @@ const Hero = () => {
                     <span>SignUp</span>
                   </div>
                 </button>
+              </div>
+              <div className="create">
+                <div className="text">Create your own apparels!</div>
+                <div className="link">
+                  <Link to="/create">Create Now</Link>
+                </div>
               </div>
             </div>
           </div>
