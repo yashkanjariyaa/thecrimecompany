@@ -1,3 +1,9 @@
+.image-scroller-container {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 .image-scroller-container .title {
   text-align: center;
   opacity: 0.8;
@@ -8,9 +14,10 @@
 }
 .image-scroller {
   margin: 1rem 0;
-  height: 70vh;
+  height: 50vh;
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 .image-scroller::-webkit-scrollbar {
@@ -19,8 +26,8 @@
 .scroll-image {
   flex: 0 0 auto;
   width: 20vw;
-  height: auto;
-  margin-right: 0.5rem;
+  height: 50vh;
+  /* margin-right: 0.5rem; */
   cursor: pointer;
   transition: transform 0.2s;
   object-fit: cover;
@@ -28,4 +35,32 @@
 
 .scroll-image:hover {
   transform: scale(1.1);
+}
+
+.image-scroller-container .link-container a {
+    font-size: 1.1rem;
+  color: white;
+  text-decoration: none;
+}
+.image-scroller-container .link-container a:hover {
+  text-decoration: underline;
+}
+.image-scroller-container .link-container a:active {
+  opacity: 0.5;
+}
+.image-scroller-container .link-container a:visited {
+  color: #b9b9b9;
+}
+.image-scroller-container .link-container {
+    margin: 0 2rem;
+}
+.link-container a{
+    width: 8vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.link-container .shop-icon{
+    font-size: 1rem;
 }

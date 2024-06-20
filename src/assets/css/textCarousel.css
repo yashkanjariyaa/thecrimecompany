@@ -1,0 +1,25 @@
+.scrolling-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.scrolling-text {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.scrolling-word {
+  margin-right: 2rem; /* Adjust spacing between words */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

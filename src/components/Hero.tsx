@@ -6,10 +6,10 @@ import img2 from "../assets/images/img2.jpeg";
 const Hero = () => {
   return (
     <>
-    {/* hero section */}
-    <div className="blob" id="blob1"></div>
-    <div className="blob" id="blob2"></div>
-    <div className="blob" id="blob3"></div>
+      {/* hero section */}
+      <div className="blob" id="blob1"></div>
+      <div className="blob" id="blob2"></div>
+      <div className="blob" id="blob3"></div>
       <div className="hero">
         <div className="head">THE CRIME COMPANY</div>
         {/* Name, Call to action and the images */}
@@ -22,7 +22,9 @@ const Hero = () => {
               <div className="description">Something to do with Apparels.</div>
             </div>
             <div className="call-to-action">
-              <div className="text">We make content based streetwear</div>
+              <div className="text">
+                We make content based and <br></br>customized streetwear
+              </div>
               {/* call to actiom buttons */}
               <div className="btn-container">
                 <button className="button">
