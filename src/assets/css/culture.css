@@ -1,0 +1,35 @@
+.culture {
+  height: min-content;
+  width: 100vw;
+}
+.culture .content {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("../images/culture-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+.culture .head {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.culture .text {
+  font-size: 1rem;
+}
+.culture .join-btn {
+  margin: 3vh;
+  padding: 0.8rem 1rem;
+  border: 1px solid white;
+  backdrop-filter: blur(5px);
+}
+.culture .join-btn a {
+  color: white;
+  text-decoration: none;
+}
+.culture .join-btn:hover {
+  background-color: rgba(255, 255, 255, 0.178);
+}

@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: url("../images/retro-bg-to-about.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -129,6 +129,7 @@ button.button-to-about a:hover {
   justify-content: space-between;
   align-items: start;
   backdrop-filter: blur(5px);
+  background-color: #00000043;
 }
 .info-container .head {
   margin-top: 0;

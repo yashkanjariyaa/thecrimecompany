@@ -7,12 +7,10 @@ import {
   faPenNib,
 } from "@fortawesome/free-solid-svg-icons";
 
-// import TextCarousel from "../components/textCarousel";
-
 import "../assets/css/toAbout.css";
 const ToAbout = () => {
   return (
-    <div style={{marginTop: "1rem"}}>
+    <div>
       <div className="tail">
         <div>STREETWEAR</div>
         <div>ETHNIC</div>
@@ -57,16 +55,24 @@ const ToAbout = () => {
             <FontAwesomeIcon className="icon pen" icon={faPenNib} />
           </div>
         </div>
-        <div style={{display: "flex", flexDirection: "column", alignItems:"center"}}>
-          <div className="head">WANT TO KNOW MORE ABOUT US?</div>
-          <button className="button-to-about">
-            <div className="bg-container">
-              <div className="bg-circle"></div>
-            </div>
-            <div className="front">
-              <Link to="/about">YES</Link>
-            </div>
-          </button>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"5vh"}}>
+            <div className="head">WANT TO KNOW MORE ABOUT US?</div>
+            <button className="button-to-about">
+              <div className="bg-container">
+                <div className="bg-circle"></div>
+              </div>
+              <div className="front">
+                <Link to="/about">YES</Link>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
       <div className="tail">

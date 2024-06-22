@@ -14,6 +14,7 @@ import Hero from "../components/Hero";
 import Carousel from "../components/CarouselHome";
 import ImageScroller from "../components/ImageScroller";
 import ToAbout from "../components/ToAbout";
+import Culture from "../components/Culture";
 
 const Home = () => {
   const images = [img1, img2, img3];
@@ -41,8 +42,9 @@ const Home = () => {
         }}
         title="TOP SELLING"
       />
-      <ToAbout />
+      <Culture />
       <Carousel images={images} interval={3000} />
+      <ToAbout />
     </section>
   );
 };

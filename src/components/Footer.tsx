@@ -39,7 +39,7 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="vaibhav">
-                <Link to="nishanthravichandran12@gmail.com">Vaibhav Pal</Link>
+                <Link to="vaibhavpal675@gmail.com">Vaibhav Pal</Link>
               </div>
             </div>
           </div>
@@ -81,7 +81,11 @@ const Footer = () => {
             <div className="location">
               <div className="head">Where? Mumbai, India</div>
               <Link to="#">
-                <img style={{height: "25vh", width:"auto"}} src={map} alt="" />
+                <img
+                  style={{ height: "25vh", width: "auto" }}
+                  src={map}
+                  alt=""
+                />
               </Link>
             </div>
           </div>
