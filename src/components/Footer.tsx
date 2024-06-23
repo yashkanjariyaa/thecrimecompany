@@ -82,7 +82,7 @@ const Footer = () => {
               <div className="head">Where? Mumbai, India</div>
               <Link to="#">
                 <img
-                  style={{ height: "25vh", width: "auto" }}
+                className="map"
                   src={map}
                   alt=""
                 />

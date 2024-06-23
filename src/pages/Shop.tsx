@@ -1,7 +1,11 @@
+import products from "../constants/productsObject.json";
+import ProductGrid from "../components/shop/ProductGrid";
+
 const Shop = () => {
   return (
-    <section>
-      <div>Shop</div>
+    <section className="shop">
+      <div className="strip"></div>
+      <ProductGrid products={products} />
     </section>
   );
 };

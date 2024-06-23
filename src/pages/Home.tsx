@@ -9,26 +9,18 @@ import img6 from "../assets/images/3.png";
 import img7 from "../assets/images/HOT GIRLS HAVE STOMACH ISSUES.png";
 import img8 from "../assets/images/Hoodie FREE.png";
 import img9 from "../assets/images/ethnic blue.png";
+import img10 from "../assets/images/STATITSTICS.png";
+import img11 from "../assets/images/I can fix her - mockup.png";
 
-import Hero from "../components/Hero";
-import Carousel from "../components/CarouselHome";
+import Hero from "../components/home/Hero";
+import Carousel from "../components/home/CarouselHome";
 import ImageScroller from "../components/ImageScroller";
-import ToAbout from "../components/ToAbout";
-import Culture from "../components/Culture";
+import ToAbout from "../components/home/ToAbout";
+import Culture from "../components/home/Culture";
 
 const Home = () => {
   const images = [img1, img2, img3];
-  const collectionImages = [
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img1,
-    img2,
-    img3,
-  ];
+  const collectionImages = [img10, img11, img4, img5, img6, img7, img8, img9];
 
   const navigate = useNavigate();
   return (
