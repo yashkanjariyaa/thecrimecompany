@@ -42,7 +42,7 @@ const ProductGrid: FC<ProductGridParams> = ({ products }) => {
             products.map((product) => {
               const img = new CloudinaryImage(product.url, {
                 cloudName: cloudinaryCloudName,
-              });
+              }).format('auto').quality('auto');
               const productItemStyle =
                 product.color == "white"
                   ? { background: "#000", color: "#fff" }
