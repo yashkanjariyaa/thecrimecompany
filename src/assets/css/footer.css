@@ -1,7 +1,6 @@
 .footer-container{
     height: max-content;
-    width: 100%;
-    padding: 2rem;
+    width: 100vw;
     overflow-x: hidden;
 }
 .footer{
@@ -24,6 +23,7 @@
     justify-content: space-between;
     padding: 0 1rem;
     width: 15vw;
+    margin: 1vh 1vw;
 }
 .col:nth-child(1), .col:nth-child(2), .col:nth-child(3){
     border-left: rgba(255, 255, 255, 0.512) solid 1px;
