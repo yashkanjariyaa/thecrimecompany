@@ -26,13 +26,19 @@ const ImageScroller: React.FC<ImageScrollerProps> = ({
           const img = new CloudinaryImage(product.url, {
             cloudName: cloudinaryCloudName,
           });
+          const imageContainerStyle =
+            product.color == "white"
+              ? { background: "#000", color: "#fff" }
+              : { background: "#fff", color: "#000" };
           return (
-            <AdvancedImage
-              key={index}
-              cldImg={img}
-              className="scroll-image"
-              onClick={() => onImageClick()}
-            />
+            <div key={index} className="image-container" style={imageContainerStyle}>
+              <AdvancedImage
+                key={index}
+                cldImg={img}
+                className="scroll-image"
+                onClick={() => onImageClick()}
+              />
+            </div>
           );
         })}
       </div>

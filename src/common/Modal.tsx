@@ -1,5 +1,4 @@
-// Modal.tsx
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect } from "react";
 import "../assets/css/modal.css";
 
 interface ModalProps {
@@ -9,14 +8,30 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ show, onClose, children }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    if (show) {
+      document.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.removeEventListener("keydown", handleKeyDown);
+    }
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [show, onClose]);
+
   if (!show) return null;
 
   return (
     <div className="modalOverlay" onClick={onClose}>
       <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-        <button className="closeButton" onClick={onClose}>
-          &times;
-        </button>
         {children}
       </div>
     </div>

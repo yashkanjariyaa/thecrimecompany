@@ -79,7 +79,7 @@ const ProductGrid: FC<ProductGridParams> = ({ products }) => {
       </div>
       {selectedProduct && (
         <Modal show={isModalOpen} onClose={handleCloseModal}>
-          <ProductCard product={selectedProduct} />
+          <ProductCard product={selectedProduct} onClose={handleCloseModal} />
         </Modal>
       )}
     </div>
