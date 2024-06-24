@@ -21,6 +21,11 @@ const ProductCard: FC<ProductCardProps> = ({ product, onClose }) => {
     cloudName: cloudinaryCloudName,
   });
 
+  const bgStyle =
+    product.color == "white"
+      ? { background: "black", color: "white" }
+      : { background: "white", color: "black" };
+
   const addToCart = (product: Product) => {
     if (!size) {
       alert("Please select a size before adding to cart.");
@@ -39,7 +44,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onClose }) => {
   };
 
   return (
-    <div className="productCard">
+    <div className="productCard" style={bgStyle}>
       <div className="image">
         <AdvancedImage cldImg={image} />
       </div>
