@@ -11,17 +11,18 @@
     position: absolute;
     left: 1rem;
 }
+/*navigation to cart and location(Mumbai)*/
 .nav-container .cart{
     position: absolute;
     right: 4rem;
     font-size: 1.2rem;
-    /* margin: 0.8rem 0; */
+    color: white;
 }
 .nav-container .location{
     position: absolute;
     right: 1rem;
     font-size: 1.2rem;
-    /* margin: 1rem 0; */
+    color: white;
 }
 .nav{
     display: flex;

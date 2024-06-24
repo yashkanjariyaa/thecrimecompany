@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
+import "../assets/css/cart.css";
 import Product from "../constants/productInterface"; // Adjust the path according to your project structure
+import { AdvancedImage } from "@cloudinary/react";
+import { CloudinaryImage } from "@cloudinary/url-gen/index";
+
+const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const Cart = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,30 +35,69 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <h2>Shopping Cart</h2>
-      {products.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              <img src={product.url} alt={product.name} width="50" />
-              <p>{product.name}</p>
-              <p>{product.color}</p>
-              <p>{product.printType}</p>
-              <p>{product.description}</p>
-              <p>{product.collection}</p>
-              <p>
-                Price: $
-                {product.discountBool ? product.discountPrice : product.price}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
-      <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
-      {products.length > 0 && <button onClick={handleBuyNow}>Buy Now</button>}
+    <div className="cart">
+      <div className="cart-title">Shopping Cart</div>
+      <div className="strip">
+        <div>STREETWEAR</div>
+        <div>ETHNIC</div>
+        <div>INDO WESTERN</div>
+        <div>CASUAL</div>
+      </div>
+      <div className="cart-container">
+        {products.length === 0 ? (
+          <p className="empty-cart">Your cart is empty</p>
+        ) : (
+          <div className="product-list">
+            {products.map((product) => {
+              const img = new CloudinaryImage(product.url, {
+                cloudName: cloudinaryCloudName,
+              });
+              return (
+                <div className="product-item" key={product.id}>
+                  <div className="product-image">
+                    <AdvancedImage cldImg={img} />
+                  </div>
+                  <div className="info-col">
+                    <div className="info">
+                      <div className="name">{product.name}</div>
+                      <div className="info-section">
+                        <div className="label">Description</div>
+                        <div className="description">{product.description}</div>
+                      </div>
+                      <div className="info-section">
+                        <div className="label">Collection</div>
+                        <div className="collection">{product.collection}</div>
+                      </div>
+                    </div>
+                    <div className="product-price">
+                      Price: ₹
+                      {product.discountBool
+                        ? product.discountPrice
+                        : product.price}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <div className="right-container">
+          <div className="total-price">
+            Total Price: ₹{totalPrice.toFixed(2)}
+          </div>
+          {products.length > 0 && (
+            <button className="buy-now-button" onClick={handleBuyNow}>
+              Buy Now
+            </button>
+          )}
+        </div>
+      </div>
+      <div className="strip">
+        <div>STREETWEAR</div>
+        <div>ETHNIC</div>
+        <div>INDO WESTERN</div>
+        <div>CASUAL</div>
+      </div>
     </div>
   );
 };

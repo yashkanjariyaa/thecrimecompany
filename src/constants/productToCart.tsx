@@ -10,6 +10,7 @@ interface Product {
     description: string;
     collection: string;
     quantity: number;
+    size: string;
   }
   
   export default Product;

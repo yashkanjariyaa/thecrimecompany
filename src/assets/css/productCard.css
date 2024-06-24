@@ -16,6 +16,8 @@
 .productCard .id{
     font-size: 0.8rem;
     text-align: right;
+    position: absolute;
+    right: 1vw;
 }
 .card-col{
     display: flex;
@@ -28,11 +30,19 @@
     width: 100%;
     font-size: 1.5rem;
 }
+.card-col .upper-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .card-col .info-section{
     margin-top: 1vh;
 }
 .card-col .label{
     opacity: 0.8;
+    font-size: 1rem;
+}
+.card-col .description, .card-col .collection{
     font-size: 1rem;
 }
 .card-col .action{
@@ -53,4 +63,13 @@
 }
 .card-col button:active{
     background-color: rgba(255, 255, 255, 0.587);
+}
+.size-select{
+    padding: 0.5rem;
+    background-color: black;
+}
+.quantity-select{
+    padding: 0.5rem;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.645);
 }
