@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../assets/css/cart.css";
-import Product from "../constants/productInterface"; // Adjust the path according to your project structure
-import ProductToCart from "../constants/productToCartInterface"; // Adjust the path according to your project structure
+import ProductToCart from "../constants/productToCart"; // Adjust the path according to your project structure
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 
@@ -30,16 +29,7 @@ const Cart = () => {
     setTotalPrice(total);
   };
 
-  const updateProduct = (id: string, size: string, quantity: number) => {
-    const updatedProducts = products.map((product) =>
-      product.id === id ? { ...product, size, quantity } : product
-    );
-    setProducts(updatedProducts);
-    localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
-    calculateTotalPrice(updatedProducts);
-  };
-
-  const handleSizeChange = (id: string, newSize: string) => {
+  const handleSizeChange = (id: number, newSize: string) => {
     const updatedProducts = products.map((product) =>
       product.id === id ? { ...product, size: newSize } : product
     );
@@ -47,7 +37,7 @@ const Cart = () => {
     localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
   };
 
-  const handleQuantityChange = (id: string, newQuantity: number) => {
+  const handleQuantityChange = (id: number, newQuantity: number) => {
     const updatedProducts = products.map((product) =>
       product.id === id ? { ...product, quantity: newQuantity } : product
     );
@@ -98,7 +88,7 @@ const Cart = () => {
                       <div className="info-section">
                         <div className="label">Size</div>
                         <select
-                        className="size-select"
+                          className="size-select"
                           value={product.size}
                           onChange={(e) =>
                             handleSizeChange(product.id, e.target.value)
@@ -147,7 +137,7 @@ const Cart = () => {
           </div>
           {products.length > 0 && (
             <button className="buy-now-button" onClick={handleBuyNow}>
-              Buy Now
+              Checkout
             </button>
           )}
         </div>

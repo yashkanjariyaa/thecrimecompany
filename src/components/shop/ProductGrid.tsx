@@ -4,7 +4,7 @@ import "../../assets/css/productGrid.css";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { AdvancedImage } from "@cloudinary/react";
 
-import Product from "../../constants/productInterface";
+import Product from "../../constants/ProductInterface";
 import Modal from "../../common/Modal";
 import ProductCard from "./ProductCard";
 
