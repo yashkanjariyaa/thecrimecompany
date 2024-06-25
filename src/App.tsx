@@ -34,7 +34,7 @@ function App() {
               <Route path="/create" element={<Create />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/form" element={<Form/>}/>
+              <Route path="/user-form" element={<Form/>}/>
             </Route>
           </Routes>
         </Suspense>

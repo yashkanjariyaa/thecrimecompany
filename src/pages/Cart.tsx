@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import "../assets/css/cart.css";
-import ProductToCart from "../constants/ProductToCart"; // Adjust the path according to your project structure
+import ProductToCart from "../constants/ProductToCart";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
+import { useUser } from "../context/UserContext";
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const Cart = () => {
   const [products, setProducts] = useState<ProductToCart[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [userExists, setUserExists] = useState<boolean>(false);
+
+  const { user } = useUser();
 
   useEffect(() => {
     const storedProducts = localStorage.getItem("cartProducts");
@@ -53,8 +57,11 @@ const Cart = () => {
     calculateTotalPrice(updatedProducts);
   };
 
+  useEffect(() => {
+    setUserExists(user ? true : false);
+  });
+
   const handleBuyNow = () => {
-    // Handle the buy now logic here
     alert("Proceeding to checkout");
   };
 
@@ -153,6 +160,7 @@ const Cart = () => {
               Checkout
             </button>
           )}
+          {userExists ? <div className="user-info"></div> : <></>}
         </div>
       </div>
       <div className="strip">

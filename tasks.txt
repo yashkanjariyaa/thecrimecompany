@@ -1,0 +1,7 @@
+1. Make fetch user data component and import to cart - show username, address, phone number
+2. Make buy component to checkout - take confirmation and display option to change user data
+3. user profile component to change user data - no image needed
+4. change icon in nav bar from login to user icon when logged in
+5. add razor pay
+
+continue with backend
