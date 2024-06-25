@@ -9,6 +9,8 @@ const Contact = React.lazy(() => import("./pages/Contact"));
 const Shop = React.lazy(() => import("./pages/Shop"));
 const Create = React.lazy(() => import("./pages/Create"));
 const Cart = React.lazy(() => import("./pages/Cart"));
+const Auth = React.lazy(() => import("./pages/Authentication"));
+
 function App() {
   return (
     <>
@@ -30,6 +32,7 @@ function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/create" element={<Create />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/auth" element={<Auth />} />
             </Route>
           </Routes>
         </Suspense>

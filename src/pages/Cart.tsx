@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../assets/css/cart.css";
-import ProductToCart from "../constants/productToCart"; // Adjust the path according to your project structure
+import ProductToCart from "../constants/ProductToCart"; // Adjust the path according to your project structure
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 

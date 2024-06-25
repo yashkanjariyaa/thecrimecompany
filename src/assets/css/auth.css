@@ -1,0 +1,55 @@
+.auth-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  width: 20vw;
+  justify-content: space-between;
+  font-size: 2rem;
+  margin: 2vh;
+}
+form .input {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-between;
+}
+form .input input {
+  height: 3vh;
+  width: 100%;
+  background: black;
+  color: white;
+  border: 1px solid white;
+  padding: 1rem;
+}
+form button {
+  width: 10vw;
+  padding: 1rem;
+  background-color: black;
+  margin: 0.2rem 0;
+  border: solid white 1px;
+}
+form button:hover {
+  background-color: white;
+  color: black;
+}
+form button:active {
+  background-color: rgba(255, 255, 255, 0.587);
+}
+.auth-container .switch {
+  background: black;
+  border: none;
+  margin: 0.2rem 0;
+  text-align: left;
+}
+.auth-container .switch:hover{
+    text-decoration: underline;
+}
