@@ -1,48 +1,60 @@
-.nav-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    font-size: 0.8rem;
-    font-weight: 100;
-    backdrop-filter: blur(5px);
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 0.8rem;
+  font-weight: 100;
+  backdrop-filter: blur(5px);
 }
-.nav-container .logo{
-    position: absolute;
-    left: 1rem;
+.nav-container .logo {
+  position: absolute;
+  left: 1rem;
 }
 /*navigation to cart and location(Mumbai)*/
-.nav-container .cart{
-    position: absolute;
-    right: 4rem;
-    font-size: 1.2rem;
-    color: white;
+.nav {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 7vh;
 }
-.nav-container .location{
-    position: absolute;
-    right: 1rem;
-    font-size: 1.2rem;
-    color: white;
+.nav .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 7vw;
 }
-.nav{
+.nav .links{
     display: flex;
     flex-direction: row;
-    color: white;
     justify-content: space-between;
     align-items: center;
-    width: 50vw;
-    height: 7vh;
+    width: 40vw;
 }
-.nav a{
-    color: white;
-    text-decoration: none;
+.nav .buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 10vw;
+  font-size: 1.2rem;
+  color: white;
+  margin-right: 2vw
 }
-.nav a:hover{
-    text-decoration: underline;
+.nav a {
+  color: white;
+  text-decoration: none;
 }
-.nav a:active{
-    opacity: 0.5;
+.nav a:hover {
+  text-decoration: underline;
 }
-.nav a:visited{
-    color: #b9b9b9;
+.nav a:active {
+  opacity: 0.5;
+}
+.nav a:visited {
+  color: #b9b9b9;
 }

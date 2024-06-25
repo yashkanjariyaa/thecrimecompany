@@ -1,6 +1,7 @@
 // Login.tsx
 import React, { useState } from "react";
 import { useUser } from "../context/UserContext";
+import { login } from "../utils/LogIn";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -9,10 +10,15 @@ const Login: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle your login logic here (e.g., API call)
-    // On successful login:
-    setUser({ email });
-    // Optionally, save the user info to local storage or cookies
+    try{
+      // Handle your login logic here 
+      const response = login({email, password});
+      console.log(response);
+      // On successful login:
+      setUser({ email });
+    }catch(err){
+      console.error(err);
+    }
   };
 
   return (

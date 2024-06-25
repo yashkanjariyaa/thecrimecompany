@@ -46,6 +46,13 @@ const Cart = () => {
     calculateTotalPrice(updatedProducts);
   };
 
+  const handleRemoveProduct = (id: number) => {
+    const updatedProducts = products.filter((product) => product.id !== id);
+    setProducts(updatedProducts);
+    localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
+    calculateTotalPrice(updatedProducts);
+  };
+
   const handleBuyNow = () => {
     // Handle the buy now logic here
     alert("Proceeding to checkout");
@@ -77,6 +84,12 @@ const Cart = () => {
                   <div className="info-col">
                     <div className="info">
                       <div className="name">{product.name}</div>
+                      <button
+                        className="remove-button"
+                        onClick={() => handleRemoveProduct(product.id)}
+                      >
+                        &times;
+                      </button>
                       <div className="info-section">
                         <div className="label">Description</div>
                         <div className="description">{product.description}</div>
