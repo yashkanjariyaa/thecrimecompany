@@ -11,7 +11,7 @@
   flex-direction: row;
 }
 .product-list {
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px) brightness(50%);
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -55,7 +55,7 @@
   font-size: 0.7rem;
 }
 .right-container {
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px) brightness(50%);
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -90,4 +90,13 @@
   padding: 0.5rem;
   background-color: black;
   border: 1px solid rgba(255, 255, 255, 0.645);
+}
+.login-container {
+  margin: 2rem;
+  font-size: 1.5rem;
+}
+.login-container a {
+  text-decoration: underline;
+  color: white;
+  font-size: 1rem;
 }

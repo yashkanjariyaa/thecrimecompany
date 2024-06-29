@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/css/imageScroller.css";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons/faArrowCircleRight";
-import Product from "../constants/productInterface";
+import Product from "../constants/ProductInterface";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 import { AdvancedImage } from "@cloudinary/react";
 

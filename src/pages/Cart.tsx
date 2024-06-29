@@ -4,6 +4,8 @@ import ProductToCart from "../constants/ProductToCart";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 import { useUser } from "../context/UserContext";
+import UserDataFetcher from "../components/DisplayUserData";
+import DisplayUserData from "../components/DisplayUserData";
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
@@ -161,6 +163,7 @@ const Cart = () => {
             </button>
           )}
           {userExists ? <div className="user-info"></div> : <></>}
+          <DisplayUserData/>
         </div>
       </div>
       <div className="strip">
