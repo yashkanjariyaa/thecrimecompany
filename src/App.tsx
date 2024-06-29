@@ -2,6 +2,7 @@ import "./App.css";
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
+import UserData from "./pages/UserData";
 
 const About = React.lazy(() => import("./pages/About"));
 const Home = React.lazy(() => import("./pages/Home"));
@@ -10,7 +11,7 @@ const Shop = React.lazy(() => import("./pages/Shop"));
 const Create = React.lazy(() => import("./pages/Create"));
 const Cart = React.lazy(() => import("./pages/Cart"));
 const Auth = React.lazy(() => import("./pages/Authentication"));
-const Form = React.lazy(() => import('./components/Form'));
+const Form = React.lazy(() => import("./components/Form"));
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
               <Route path="/create" element={<Create />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/user-form" element={<Form/>}/>
+              <Route path="/user-form" element={<Form />} />
+              <Route path="/user" element={<UserData />} />
             </Route>
           </Routes>
         </Suspense>

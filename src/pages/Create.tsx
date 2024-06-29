@@ -1,5 +1,5 @@
 import CreateForm from "../components/create/CreateForm";
-import ApparelData from "../constants/ApparelData";
+import ApparelData from "../constants/ApparelDataInterface";
 // import DisplayModel from "../components/create/DisplayModel";
 import "../assets/css/create.css";
 const Create: React.FC = () => {

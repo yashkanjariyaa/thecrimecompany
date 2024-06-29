@@ -5,9 +5,15 @@ import {
   faCartShopping,
   faLocationDot,
   faRightToBracket,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { useUser } from "../context/UserContext";
 import logoWhite from "../assets/images/logo-white.png";
+
 const NavBar = () => {
+  const { user } = useUser();
+  const email = user.email;
+  console.log(email);
   return (
     <div className="nav-container">
       <nav className="nav">
@@ -33,9 +39,15 @@ const NavBar = () => {
           <Link className="location" to="/footer">
             <FontAwesomeIcon icon={faLocationDot} />
           </Link>
-          <Link className="signin" to="/auth">
-            <FontAwesomeIcon icon={faRightToBracket} />
-          </Link>
+          {email ? (
+            <Link to="/user">
+              <FontAwesomeIcon icon={faUser} />
+            </Link>
+          ) : (
+            <Link className="signin" to="/auth">
+              <FontAwesomeIcon icon={faRightToBracket} />
+            </Link>
+          )}
         </div>
       </nav>
     </div>

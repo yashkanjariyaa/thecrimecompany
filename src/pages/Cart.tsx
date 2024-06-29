@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../assets/css/cart.css";
-import ProductToCart from "../constants/ProductToCart";
+import ProductToCart from "../constants/ProductToCartInterface";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 import { useUser } from "../context/UserContext";

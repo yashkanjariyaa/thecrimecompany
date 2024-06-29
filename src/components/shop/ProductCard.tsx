@@ -4,7 +4,7 @@ import { CloudinaryImage } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
 
 import Product from "../../constants/ProductInterface";
-import ProductToCart from "../../constants/ProductToCart"; // Adjust the path according to your project structure
+import ProductToCart from "../../constants/ProductToCartInterface"; // Adjust the path according to your project structure
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 

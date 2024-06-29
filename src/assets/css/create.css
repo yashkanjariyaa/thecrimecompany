@@ -9,18 +9,19 @@
 .form-display-container{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     height: 81vh;
 }
 .form-display-container .left{
     overflow-y: scroll;
     width: max-content;
-    border-right: 1px solid rgba(255, 255, 255, 0.417);
 }
 .form-display-container .left::-webkit-scrollbar{
     display: none;
 }
-.form-display-container .right{
+
+/* .form-display-container .right{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
