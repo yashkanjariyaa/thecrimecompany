@@ -15,7 +15,7 @@ const Create: React.FC = () => {
         </div>
         <div className="right">
           {/* path accourding to place of DisplayModel component */}
-          <DisplayModel url={"../../assets/models/tshirt.glb"}/>
+          <DisplayModel objUrl="../../assets/models/obj.obj" mtlUrl="../../assets/models/obj.mtl"/>
         </div>
       </div>
     </section>
