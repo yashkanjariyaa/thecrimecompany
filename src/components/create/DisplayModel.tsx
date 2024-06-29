@@ -1,3 +1,4 @@
+//supposed to be used in create page to display model of the apparel
 import React, { useEffect } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";

@@ -1,6 +1,6 @@
 import CreateForm from "../components/create/CreateForm";
 import ApparelData from "../constants/ApparelData";
-import DisplayModel from "../components/create/DisplayModel";
+// import DisplayModel from "../components/create/DisplayModel";
 import "../assets/css/create.css";
 const Create: React.FC = () => {
   const handleFormSubmit = (data: ApparelData) => {
@@ -13,10 +13,11 @@ const Create: React.FC = () => {
         <div className="left">
           <CreateForm onSubmit={handleFormSubmit} />
         </div>
-        <div className="right">
-          {/* path accourding to place of DisplayModel component */}
+        {/* <div className="right">
+          path accourding to place of DisplayModel component
           <DisplayModel objUrl="../../assets/models/obj.obj" mtlUrl="../../assets/models/obj.mtl"/>
-        </div>
+        </div> 
+        Tried to display 3d models besides - first will have to find these models in small obj files or glb/gltf*/}
       </div>
     </section>
   );
