@@ -1,5 +1,3 @@
----
-
 # Project Setup
 
 This project is structured into two main folders: `client` and `server`. The `client` folder contains the Vite + React + TypeScript setup, and the `server` folder contains the Node.js + TypeScript setup.
@@ -16,8 +14,6 @@ This project is structured into two main folders: `client` and `server`. The `cl
     - [Running the Server](#running-the-server)
     - [Building the Server](#building-the-server)
 3. [Scripts](#scripts)
-
----
 
 ## Client Setup
 
