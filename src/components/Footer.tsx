@@ -63,11 +63,11 @@ const Footer = () => {
                   <Link to="#">Others</Link>
                 </div>
               </div>
-              <div className="create-link">
-                <div className="head">From reel to real</div>
-                <Link to="#">Create</Link>
-                <div className="description">Create your own apparels</div>
-              </div>
+            </div>
+            <div className="create-link">
+              <div className="head">From reel to real</div>
+              <Link to="#">Create</Link>
+              <div className="description">Create your own apparels</div>
             </div>
           </div>
           <div className="col">
@@ -81,11 +81,7 @@ const Footer = () => {
             <div className="location">
               <div className="head">Where? Mumbai, India</div>
               <Link to="#">
-                <img
-                className="map"
-                  src={map}
-                  alt=""
-                />
+                <img className="map" src={map} alt="" />
               </Link>
             </div>
           </div>

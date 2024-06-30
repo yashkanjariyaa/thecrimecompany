@@ -2,6 +2,7 @@
     height: max-content;
     width: 100vw;
     overflow-x: hidden;
+    border-top: solid 1px rgba(255, 255, 255, 0.32);
 }
 .footer{
     width: 100%;
@@ -20,7 +21,7 @@
 .col{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0 1rem;
     width: 15vw;
     margin: 1vh 1vw;

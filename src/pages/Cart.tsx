@@ -4,7 +4,6 @@ import ProductToCart from "../constants/ProductToCartInterface";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 import { useUser } from "../context/UserContext";
-import UserDataFetcher from "../components/DisplayUserData";
 import DisplayUserData from "../components/DisplayUserData";
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
@@ -77,82 +76,87 @@ const Cart = () => {
         <div>CASUAL</div>
       </div>
       <div className="cart-container">
-        {products.length === 0 ? (
-          <p className="empty-cart">Your cart is empty</p>
-        ) : (
-          <div className="product-list">
-            {products.map((product) => {
-              const img = new CloudinaryImage(product.url, {
-                cloudName: cloudinaryCloudName,
-              });
-              return (
-                <div className="product-item" key={product.id}>
-                  <div className="product-image">
-                    <AdvancedImage cldImg={img} />
-                  </div>
-                  <div className="info-col">
-                    <div className="info">
-                      <div className="name">{product.name}</div>
-                      <button
-                        className="remove-button"
-                        onClick={() => handleRemoveProduct(product.id)}
-                      >
-                        &times;
-                      </button>
-                      <div className="info-section">
-                        <div className="label">Description</div>
-                        <div className="description">{product.description}</div>
-                      </div>
-                      <div className="info-section">
-                        <div className="label">Collection</div>
-                        <div className="collection">{product.collection}</div>
-                      </div>
-                      <div className="info-section">
-                        <div className="label">Size</div>
-                        <select
-                          className="size-select"
-                          value={product.size}
-                          onChange={(e) =>
-                            handleSizeChange(product.id, e.target.value)
-                          }
+        <div className="left-container">
+          {products.length === 0 ? (
+            <p className="empty-cart">Your cart is empty</p>
+          ) : (
+            <div className="product-list">
+              {products.map((product) => {
+                const img = new CloudinaryImage(product.url, {
+                  cloudName: cloudinaryCloudName,
+                });
+                return (
+                  <div className="product-item" key={product.id}>
+                    <div className="product-image">
+                      <AdvancedImage cldImg={img} />
+                    </div>
+                    <div className="info-col">
+                      <div className="info">
+                        <div className="name">{product.name}</div>
+                        <button
+                          className="remove-button"
+                          onClick={() => handleRemoveProduct(product.id)}
                         >
-                          <option value="" disabled>
-                            Select Size
-                          </option>
-                          <option value="S">S</option>
-                          <option value="M">M</option>
-                          <option value="L">L</option>
-                          <option value="XL">XL</option>
-                        </select>
+                          &times;
+                        </button>
+                        <div className="info-section">
+                          <div className="label">Description</div>
+                          <div className="description">
+                            {product.description}
+                          </div>
+                        </div>
+                        <div className="info-section">
+                          <div className="label">Collection</div>
+                          <div className="collection">{product.collection}</div>
+                        </div>
+                        <div className="info-section">
+                          <div className="label">Size</div>
+                          <select
+                            className="size-select"
+                            value={product.size}
+                            onChange={(e) =>
+                              handleSizeChange(product.id, e.target.value)
+                            }
+                          >
+                            <option value="" disabled>
+                              Select Size
+                            </option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                          </select>
+                        </div>
+                        <div className="info-section">
+                          <div className="label">Quantity</div>
+                          <input
+                            type="number"
+                            className="quantity-select"
+                            value={product.quantity}
+                            onChange={(e) =>
+                              handleQuantityChange(
+                                product.id,
+                                Number(e.target.value)
+                              )
+                            }
+                            min="1"
+                          />
+                        </div>
                       </div>
-                      <div className="info-section">
-                        <div className="label">Quantity</div>
-                        <input
-                          type="number"
-                          className="quantity-select"
-                          value={product.quantity}
-                          onChange={(e) =>
-                            handleQuantityChange(
-                              product.id,
-                              Number(e.target.value)
-                            )
-                          }
-                          min="1"
-                        />
+                      <div className="product-price">
+                        Price: ₹
+                        {product.discountBool
+                          ? product.discountPrice
+                          : product.price}
                       </div>
-                    </div>
-                    <div className="product-price">
-                      Price: ₹
-                      {product.discountBool
-                        ? product.discountPrice
-                        : product.price}
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+                );
+              })}
+            </div>
+          )}
+        </div>
+
         <div className="right-container">
           <div className="total-price">
             Total Price: ₹{totalPrice.toFixed(2)}
@@ -163,7 +167,7 @@ const Cart = () => {
             </button>
           )}
           {userExists ? <div className="user-info"></div> : <></>}
-          <DisplayUserData/>
+          <DisplayUserData />
         </div>
       </div>
       <div className="strip">

@@ -18,6 +18,14 @@
   justify-content: space-between;
   width: 50vw;
 }
+.cart-container .left-container{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 75vh;
+}
+.cart-container .left-container::-webkit-scrollbar {
+  display: none;
+}
 .product-item {
   display: flex;
   flex-direction: row;
