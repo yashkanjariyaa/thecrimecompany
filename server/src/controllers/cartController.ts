@@ -1,4 +1,5 @@
 import {Request, Response} from "express";
+import cartDataModel from "../models/cartDataModel";
 
 const StoreCartData = async (res: Response, req: Request) => {};
 

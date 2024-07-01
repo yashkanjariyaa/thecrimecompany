@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import userDataModel from "../models/userDataModel";
 
 const StoreUserData = async (req: Request, res: Response) => {};
 
