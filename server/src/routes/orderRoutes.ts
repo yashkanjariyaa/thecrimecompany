@@ -3,8 +3,8 @@ import orderController from "../controllers/orderController";
 
 const orderRouter = Router();
 
-orderRouter.post("/register", orderController.RegisterOrder);
+orderRouter.post("/orders", orderController.RegisterOrder);
 
-orderRouter.get("/retrieve", orderController.RetrieveOrderData);
+orderRouter.get("/orders/:orderId", orderController.RetrieveOrderData);
 
 export default orderRouter;

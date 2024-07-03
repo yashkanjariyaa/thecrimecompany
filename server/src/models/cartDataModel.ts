@@ -19,6 +19,6 @@ cartDataSchema.pre("save", function (next) {
   next();
 });
 
-const cartDataModel = mongoose.model("CartData", cartDataSchema);
+const CartDataModel = mongoose.model("CartData", cartDataSchema);
 
-export default cartDataModel;
+export default CartDataModel;
