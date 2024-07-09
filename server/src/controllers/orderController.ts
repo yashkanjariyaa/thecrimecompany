@@ -37,4 +37,6 @@ const RetrieveOrderData = async (req: Request, res: Response) => {
   }
 };
 
-export default { RegisterOrder, RetrieveOrderData };
+const DeleteOrderData = async (req: Request, res: Response) => {};
+
+export default { RegisterOrder, RetrieveOrderData, DeleteOrderData };

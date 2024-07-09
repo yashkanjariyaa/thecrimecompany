@@ -3,7 +3,7 @@ import cartController from "../controllers/cartController";
 
 const cartRouter = Router();
 
-cartRouter.post("/store", cartController.StoreCartData);
+cartRouter.post("/create", cartController.StoreCartData);
 
 cartRouter.put("/update", cartController.UpdateCartData);
 

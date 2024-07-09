@@ -1,10 +1,15 @@
 import { Router } from "express";
 import orderController from "../controllers/orderController";
+import { authenticate } from "../middlewares/JWT";
 
 const orderRouter = Router();
 
-orderRouter.post("/orders", orderController.RegisterOrder);
+orderRouter.use(authenticate);
 
-orderRouter.get("/orders/:orderId", orderController.RetrieveOrderData);
+orderRouter.post("/place", orderController.RegisterOrder);
+
+orderRouter.get("/retrieve/:orderId", orderController.RetrieveOrderData);
+
+orderRouter.delete("/delete/:orderId", orderController.DeleteOrderData);
 
 export default orderRouter;

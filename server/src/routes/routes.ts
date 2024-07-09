@@ -22,6 +22,6 @@ router.get("/api", (req: Request, res: Response) => {
 router.use("/api/auth", authRouter);
 router.use("/api/cart", cartRouter);
 router.use("/api/order", orderRouter);
-router.use("/api/userdata", userDataRouter);
+router.use("/api/user", userDataRouter);
 
 export default router;

@@ -5,6 +5,7 @@ import cors from "cors";
 import connect from "./database/connection";
 import { PORT } from "./config";
 import router from "./routes/routes";
+import { authError } from "./middlewares/JWT";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(helmet());
 app.use(cors());
+app.use(authError);
 
 connect();
 
