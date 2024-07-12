@@ -8,8 +8,8 @@ orderRouter.use(authenticate);
 
 orderRouter.post("/place", orderController.RegisterOrder);
 
-orderRouter.get("/retrieve/:orderId", orderController.RetrieveOrderData);
+orderRouter.get("/retrieve", orderController.RetrieveOrderData);
 
-orderRouter.delete("/delete/:orderId", orderController.DeleteOrderData);
+orderRouter.delete("/delete", orderController.DeleteOrderData);
 
 export default orderRouter;

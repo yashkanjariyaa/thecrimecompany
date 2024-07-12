@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import CartDataModel from "../models/cartDataModel";
 
-const StoreCartData = async (res: Response, req: Request) => {
+const StoreCartData = async (req: Request, res: Response) => {
   try {
     const { userId, items } = req.body;
 
@@ -15,9 +15,9 @@ const StoreCartData = async (res: Response, req: Request) => {
   }
 };
 
-const UpdateCartData = async (res: Response, req: Request) => {
+const UpdateCartData = async (req: Request, res: Response) => {
   try {
-    const { cartId } = req.params;
+    const cartId = req.query.id;
     const { items } = req.body;
 
     // Find the cart data by ID and update it
@@ -37,12 +37,12 @@ const UpdateCartData = async (res: Response, req: Request) => {
   }
 };
 
-const RetrieveCartData = async (res: Response, req: Request) => {
+const RetrieveCartData = async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params;
+    const userId  = req.query.id;
 
     // Retrieve all cart data for a specific user
-    const cartData = await CartDataModel.find({ userId });
+    const cartData = await CartDataModel.find({ userId: userId });
 
     res.status(200).json(cartData);
   } catch (error) {
@@ -50,9 +50,9 @@ const RetrieveCartData = async (res: Response, req: Request) => {
   }
 };
 
-const DeleteCartData = async (res: Response, req: Request) => {
+const DeleteCartData = async (req: Request, res: Response) => {
   try {
-    const { cartId } = req.params;
+    const cartId  = req.query.id;
 
     // Delete cart data by ID
     const deletedCartData = await CartDataModel.findByIdAndDelete(cartId);

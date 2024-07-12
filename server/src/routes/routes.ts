@@ -7,7 +7,7 @@ import userDataRouter from "./userDataRoutes";
 const router = Router();
 
 router.use("/api", (req: Request, res: Response, next: NextFunction) => {
-  res.setHeader("COntet-Type", "application/json");
+  res.setHeader("Content-Type", "application/json");
   next();
 });
 

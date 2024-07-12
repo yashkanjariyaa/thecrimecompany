@@ -22,7 +22,7 @@ const LoginController = async (req: Request, res: Response) => {
       const token = jwt.sign(
         { userId: user._id, email: user.email },
         JWT_SECRET,
-        { expiresIn: "1h" }
+        { expiresIn: "3h" }
       );
       res.status(200).json({ token });
     });
@@ -50,7 +50,7 @@ const SignUpController = async (req: Request, res: Response) => {
     const token = jwt.sign(
       { userId: newUser._id, email: newUser._id },
       JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "3h" }
     );
 
     res.status(201).json({ token });
