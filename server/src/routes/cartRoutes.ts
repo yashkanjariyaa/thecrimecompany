@@ -3,12 +3,12 @@ import cartController from "../controllers/cartController";
 
 const cartRouter = Router();
 
-cartRouter.post("/create", cartController.StoreCartData);
+cartRouter.post("/cart", cartController.StoreCartData);
 
-cartRouter.put("/update", cartController.UpdateCartData);
+cartRouter.put("/cart", cartController.UpdateCartData);
 
-cartRouter.get("/retrieve", cartController.RetrieveCartData);
+cartRouter.get("/cart", cartController.RetrieveCartData);
 
-cartRouter.delete("/delete", cartController.DeleteCartData);
+cartRouter.delete("/cart", cartController.DeleteCartData);
 
 export default cartRouter;

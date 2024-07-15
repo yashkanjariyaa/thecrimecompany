@@ -3,6 +3,7 @@ import authRouter from "./authRoutes";
 import cartRouter from "./cartRoutes";
 import orderRouter from "./orderRoutes";
 import userDataRouter from "./userDataRoutes";
+import productRouter from "./productRoutes";
 
 const router = Router();
 
@@ -19,9 +20,10 @@ router.get("/api", (req: Request, res: Response) => {
   res.json({ message: "Hello, TypeScript with Node.js API!" });
 });
 
-router.use("/api/auth", authRouter);
-router.use("/api/cart", cartRouter);
-router.use("/api/order", orderRouter);
-router.use("/api/user", userDataRouter);
+router.use("/api/", authRouter);
+router.use("/api/", cartRouter);
+router.use("/api/", orderRouter);
+router.use("/api/", userDataRouter);
+router.use("/api/", productRouter);
 
 export default router;

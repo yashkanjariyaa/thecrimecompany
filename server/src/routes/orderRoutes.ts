@@ -6,10 +6,10 @@ const orderRouter = Router();
 
 orderRouter.use(authenticate);
 
-orderRouter.post("/place", orderController.RegisterOrder);
+orderRouter.post("/order", orderController.RegisterOrder);
 
-orderRouter.get("/retrieve", orderController.RetrieveOrderData);
+orderRouter.get("/order", orderController.RetrieveOrderData);
 
-orderRouter.delete("/delete", orderController.DeleteOrderData);
+orderRouter.delete("/order", orderController.DeleteOrderData);
 
 export default orderRouter;
