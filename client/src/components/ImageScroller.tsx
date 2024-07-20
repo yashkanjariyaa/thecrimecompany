@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../assets/css/imageScroller.css";
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons/faArrowCircleRight";
-import Product from "../constants/ProductInterface";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
 import { AdvancedImage } from "@cloudinary/react";
 
@@ -14,7 +13,7 @@ interface ImageScrollerProps {
   products: Product[];
   onImageClick: Function;
 }
-// will update the component to input a json file with headings and names
+
 const ImageScroller: React.FC<ImageScrollerProps> = ({
   products,
   onImageClick,
@@ -31,7 +30,11 @@ const ImageScroller: React.FC<ImageScrollerProps> = ({
               ? { background: "#000", color: "#fff" }
               : { background: "#fff", color: "#000" };
           return (
-            <div key={index} className="image-container" style={imageContainerStyle}>
+            <div
+              key={index}
+              className="image-container"
+              style={imageContainerStyle}
+            >
               <AdvancedImage
                 key={index}
                 cldImg={img}

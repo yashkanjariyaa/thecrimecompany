@@ -1,8 +1,8 @@
 import axiosInstance from "./instances/axiosInstance";
-
+const baseURLCart = "/api/cart";
 const getCart = async (userId: string) => {
   try {
-    const response = await axiosInstance.get("/cart", {
+    const response = await axiosInstance.get(baseURLCart, {
       params: { id: userId },
     });
     return response.data;
@@ -13,7 +13,7 @@ const getCart = async (userId: string) => {
 
 const createCart = async (userId: string, items: any[]) => {
   try {
-    const response = await axiosInstance.post("/cart", {
+    const response = await axiosInstance.post(baseURLCart, {
       userId,
       items,
     });
@@ -25,7 +25,7 @@ const createCart = async (userId: string, items: any[]) => {
 
 const updateCart = async (cartId: string, items: any[]) => {
   try {
-    const response = await axiosInstance.post("/cart", {
+    const response = await axiosInstance.post(baseURLCart, {
       id: cartId,
       items,
     });
@@ -37,7 +37,7 @@ const updateCart = async (cartId: string, items: any[]) => {
 
 const deleteCart = async (cartId: string) => {
   try {
-    const response = await axiosInstance.delete("/cart", {
+    const response = await axiosInstance.delete(baseURLCart, {
       params: { id: cartId },
     });
     return response.data;

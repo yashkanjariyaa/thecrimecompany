@@ -3,8 +3,6 @@ import { FC, useState } from "react";
 import "../../assets/css/productGrid.css";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { AdvancedImage } from "@cloudinary/react";
-
-import Product from "../../constants/ProductInterface";
 import Modal from "../../common/Modal";
 import ProductCard from "./ProductCard";
 
@@ -49,7 +47,7 @@ const ProductGrid: FC<ProductGridParams> = ({ products }) => {
                   : { background: "#fff", color: "#000" };
               return (
                 <div
-                  key={product.id}
+                  key={product.productId}
                   className="productItem"
                   style={productItemStyle}
                   onClick={() => handleProductClick(product)}

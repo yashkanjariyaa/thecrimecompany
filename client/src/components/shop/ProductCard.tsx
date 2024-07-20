@@ -3,9 +3,6 @@ import "../../assets/css/productCard.css";
 import { CloudinaryImage } from "@cloudinary/url-gen";
 import { AdvancedImage } from "@cloudinary/react";
 
-import Product from "../../constants/ProductInterface";
-import ProductToCart from "../../constants/ProductToCartInterface"; // Adjust the path according to your project structure
-
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 interface ProductCardProps {
@@ -31,10 +28,9 @@ const ProductCard: FC<ProductCardProps> = ({ product, onClose }) => {
       alert("Please select a size before adding to cart.");
       return;
     }
-
     const cartProducts = localStorage.getItem("cartProducts");
-    let cart: ProductToCart[] = cartProducts ? JSON.parse(cartProducts) : [];
-    const productToAdd: ProductToCart = { ...product, size, quantity };
+    let cart: CartItem[] = cartProducts ? JSON.parse(cartProducts) : [];
+    const productToAdd: CartItem = { product, size, quantity };
     cart.push(productToAdd);
     localStorage.setItem("cartProducts", JSON.stringify(cart));
     alert(
@@ -50,7 +46,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onClose }) => {
       </div>
       <div className="card-col">
         <div className="upper-container">
-          <div className="id">{product.id}</div>
+          <div className="id">{product.productId}</div>
           <div className="info">
             <div className="name">{product.name}</div>
             <div className="info-section">

@@ -1,8 +1,9 @@
 import axiosInstance from "./instances/axiosInstance";
+const baseURLUser = "/api/user";
 
 const getUserData = async (id: string) => {
   try {
-    const response = await axiosInstance.get(`/user?id=${id}`);
+    const response = await axiosInstance.get(`${baseURLUser}?id=${id}`);
     return response.data;
   } catch (error) {
     throw error;
@@ -17,7 +18,7 @@ const createUser = async (
   age: number
 ) => {
   try {
-    const response = await axiosInstance.post("/user", {
+    const response = await axiosInstance.post(baseURLUser, {
       name,
       email,
       mobile,
@@ -32,7 +33,10 @@ const createUser = async (
 
 const updateUserData = async (id: string, updates: any) => {
   try {
-    const response = await axiosInstance.put(`/user?id=${id}`, updates);
+    const response = await axiosInstance.put(
+      `${baseURLUser}?id=${id}`,
+      updates
+    );
     return response.data;
   } catch (error) {
     throw error;
@@ -41,7 +45,7 @@ const updateUserData = async (id: string, updates: any) => {
 
 const deleteUser = async (id: string) => {
   try {
-    const response = await axiosInstance.delete(`/user?id=${id}`);
+    const response = await axiosInstance.delete(`${baseURLUser}?id=${id}`);
     return response.data;
   } catch (error) {
     throw error;

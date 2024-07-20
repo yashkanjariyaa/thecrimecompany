@@ -1,29 +1,29 @@
-// Login.tsx
 import React, { useState } from "react";
-import { useUser } from "../context/UserContext";
-import { login } from "../utils/LogIn";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../../context/UserContext";
+import auth from "../../api/auth";
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useUser();
+  const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try{
-      // Handle your login logic here 
-      const response = login({email, password});
-      console.log(response);
-      // On successful login:
+    try {
+      const response = auth.signup(email, password);
       setUser({ email });
-    }catch(err){
-      console.error(err);
+      console.log("Sign Up Successful:", response);
+      navigate("/user-form");
+    } catch (err) {
+      console.error("Sign up error:", err);
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <div>Login</div>
+    <form onSubmit={handleSignup}>
+      <div>Sign Up</div>
       <div className="input">
         <input
           type="email"
@@ -39,9 +39,9 @@ const Login: React.FC = () => {
         />
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
 
-export default Login;
+export default Signup;

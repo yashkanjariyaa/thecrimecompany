@@ -1,6 +1,6 @@
 // UserContext.js
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { User, UserContextType} from "../constants/UserContextInterface";
+import { User, UserContextType} from "../types/UserContextInterface";
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 

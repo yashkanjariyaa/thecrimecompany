@@ -1,5 +1,5 @@
 .auth-container {
-  height: 90vh;
+  height: 93vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -25,10 +25,11 @@ form .input {
 form .input input {
   height: 3vh;
   width: 100%;
-  background: black;
+  background: rgba(0, 0, 0, 0.282);
   color: white;
   border: 1px solid white;
   padding: 1rem;
+  backdrop-filter: blur(10px);
 }
 form button {
   width: 10vw;

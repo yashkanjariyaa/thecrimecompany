@@ -1,32 +1,30 @@
+// Login.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../context/UserContext";
-import { signup } from "../utils/SignUp";
+import { useUser } from "../../context/UserContext";
+import auth from "../../api/auth";
 
-const Signup: React.FC = () => {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useUser();
   const navigate = useNavigate();
 
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try{
-      // Handling signup logic here 
-      const response = signup({email, password});
-      // On successful signup:
+    try {
+      const response = auth.login(email, password);
+      console.log("Login Successful:", response);
       setUser({ email });
-      console.log("Sign Up Successful:", response);
-      navigate('/form');
-    }catch(err){
-      console.error('Sign up error:', err);
+      navigate("/user-form");
+    } catch (err) {
+      console.error(err);
     }
-    // Optionally, save the user info to local storage or cookies
   };
 
   return (
-    <form onSubmit={handleSignup}>
-      <div>Sign Up</div>
+    <form onSubmit={handleLogin}>
+      <div>Login</div>
       <div className="input">
         <input
           type="email"
@@ -42,9 +40,9 @@ const Signup: React.FC = () => {
         />
       </div>
 
-      <button type="submit">Sign Up</button>
+      <button type="submit">Login</button>
     </form>
   );
 };
 
-export default Signup;
+export default Login;

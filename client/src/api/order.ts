@@ -1,8 +1,9 @@
 import axiosInstance from "./instances/axiosInstance";
+const baseURLOrder = "/api/order";
 
 const getOrders = async (orderId: string) => {
   try {
-    const response = await axiosInstance.get("/order", {
+    const response = await axiosInstance.get(baseURLOrder, {
       params: { id: orderId },
     });
     return response.data;
@@ -18,7 +19,7 @@ const createOrder = async (
   status: string
 ) => {
   try {
-    const response = await axiosInstance.post("/order", {
+    const response = await axiosInstance.post(baseURLOrder, {
       userId,
       items,
       totalPrice,
@@ -32,7 +33,7 @@ const createOrder = async (
 
 const deleteOrder = async (orderId: string) => {
   try {
-    const response = await axiosInstance.delete("/order", {
+    const response = await axiosInstance.delete(baseURLOrder, {
       params: { id: orderId },
     });
     return response.data;

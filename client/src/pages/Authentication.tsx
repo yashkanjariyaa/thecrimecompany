@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "../assets/css/auth.css";
-import LoginComponent from "../components/Login";
-import SignupComponent from "../components/Signup";
+import LoginComponent from "../components/auth/Login";
+import SignupComponent from "../components/auth/Signup";
+import loginBg from "../assets/images/login-bg.jpg";
+import signupBg from "../assets/images/signup-bg.jpg";
 
 const AuthComponent = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -10,15 +12,22 @@ const AuthComponent = () => {
     setIsLogin(!isLogin);
   };
 
+  const bgStyle = {
+    backgroundImage: `url(${isLogin ? loginBg : signupBg})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
+
   return (
-    <div className="auth-container">
+    <div className="auth-container" style={bgStyle}>
       {isLogin ? <LoginComponent /> : <SignupComponent />}
-      {isLogin ? (
-        <div>Do not have an account?</div>
-      ) : (
-        <div>Already have an account?</div>
-      )}
-      <button className="switch" onClick={toggleAuth}>{isLogin ? "Signup" : "Login"}</button>
+      <div className="auth-switch">
+        {isLogin ? "Do not have an account?" : "Already have an account?"}
+        <button className="switch" onClick={toggleAuth}>
+          {isLogin ? "Signup" : "Login"}
+        </button>
+      </div>
     </div>
   );
 };

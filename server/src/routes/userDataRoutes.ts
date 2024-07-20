@@ -1,10 +1,7 @@
 import { Router } from "express";
 import userDataController from "../controllers/userDataController";
-import { authenticate } from "../middlewares/JWT";
 
 const userDataRouter = Router();
-
-userDataRouter.use(authenticate);
 
 userDataRouter.post("/register", userDataController.StoreUserData);
 

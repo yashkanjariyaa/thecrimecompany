@@ -13,7 +13,7 @@ import logoWhite from "../assets/images/logo-white.png";
 const NavBar = () => {
   const { user } = useUser();
   const email = user.email;
-  console.log(email);
+  
   return (
     <div className="nav-container">
       <nav className="nav">
