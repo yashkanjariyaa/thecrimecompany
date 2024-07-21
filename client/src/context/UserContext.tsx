@@ -1,4 +1,3 @@
-// UserContext.js
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -16,14 +15,19 @@ interface UserProviderProps {
 }
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<User>({ email: null }); // Initial user state
+  const [user, setUserState] = useState<User>({ email: null }); // Initial user state
+
+  const setUser: React.Dispatch<React.SetStateAction<User>> = (user) => {
+    console.log("Setting user:", user);
+    setUserState(user);
+  };
 
   const logout = () => {
     setUser({ email: null });
   };
-  
+
   return (
-    <UserContext.Provider value={{ user, setUser, logout}}>
+    <UserContext.Provider value={{ user, setUser, logout }}>
       {children}
     </UserContext.Provider>
   );

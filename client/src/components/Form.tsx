@@ -12,9 +12,11 @@ const Form = () => {
     address: "",
   });
   const navigate = useNavigate();
-  const isLoggedIn = useCheckLogin();
+  const isNotLoggedIn = useCheckLogin();
+
   useEffect(() => {
-    if (!isLoggedIn) {
+    console.log("from component",isNotLoggedIn);
+    if (isNotLoggedIn) {
       navigate("/auth");
     }
   }, [navigate]);

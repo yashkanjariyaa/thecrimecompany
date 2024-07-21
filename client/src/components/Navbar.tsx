@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../assets/css/navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -16,7 +16,8 @@ import { useUser } from "../context/UserContext";
 const NavBar = () => {
   const { user, logout } = useUser();
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const isLoggedIn = useCheckLogin();
+  const isNotLoggedIn = useCheckLogin();
+  const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -24,6 +25,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     auth.logout(user, logout);
+    navigate("/");
     console.log("User logged out");
   };
 
@@ -52,7 +54,7 @@ const NavBar = () => {
           <Link className="location" to="/footer">
             <FontAwesomeIcon icon={faLocationDot} />
           </Link>
-          {isLoggedIn ? (
+          {!isNotLoggedIn ? (
             <div className="user-menu" onClick={toggleDropdown}>
               <FontAwesomeIcon icon={faUser} />
               {dropdownVisible && (
