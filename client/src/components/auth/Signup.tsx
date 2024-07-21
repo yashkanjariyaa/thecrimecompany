@@ -12,7 +12,7 @@ const Signup: React.FC = () => {
   const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = auth.signup(email, password);
+      const response = auth.signup(email, password, setUser);
       setUser({ email });
       console.log("Sign Up Successful:", response);
       navigate("/user-form");

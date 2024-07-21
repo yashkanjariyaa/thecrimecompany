@@ -35,4 +35,5 @@ interface User {
 interface UserContextType {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
+  logout: () => void;
 }

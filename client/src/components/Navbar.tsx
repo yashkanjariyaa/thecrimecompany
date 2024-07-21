@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../assets/css/navbar.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,13 +8,25 @@ import {
   faRightToBracket,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { useUser } from "../context/UserContext";
 import logoWhite from "../assets/images/logo-white.png";
+import auth from "../api/auth";
+import { useCheckLogin } from "../hooks/checkLogIn";
+import { useUser } from "../context/UserContext";
 
 const NavBar = () => {
-  const { user } = useUser();
-  const email = user.email;
-  
+  const { user, logout } = useUser();
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const isLoggedIn = useCheckLogin();
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleLogout = () => {
+    auth.logout(user, logout);
+    console.log("User logged out");
+  };
+
   return (
     <div className="nav-container">
       <nav className="nav">
@@ -22,7 +35,7 @@ const NavBar = () => {
             <img
               style={{ height: "3rem", width: "auto" }}
               src={logoWhite}
-              alt=""
+              alt="Logo"
             />
           </Link>
         </div>
@@ -39,10 +52,16 @@ const NavBar = () => {
           <Link className="location" to="/footer">
             <FontAwesomeIcon icon={faLocationDot} />
           </Link>
-          {email ? (
-            <Link to="/user">
+          {isLoggedIn ? (
+            <div className="user-menu" onClick={toggleDropdown}>
               <FontAwesomeIcon icon={faUser} />
-            </Link>
+              {dropdownVisible && (
+                <div className="dropdown">
+                  <Link to="/user">Profile</Link>
+                  <button onClick={handleLogout}>Logout</button>
+                </div>
+              )}
+            </div>
           ) : (
             <Link className="signin" to="/auth">
               <FontAwesomeIcon icon={faRightToBracket} />

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCheckLogin } from "../hooks/checkLogIn";
 import "../assets/css/form.css";
 
 const Form = () => {
@@ -9,8 +11,17 @@ const Form = () => {
     mobileNumber: "",
     address: "",
   });
+  const navigate = useNavigate();
+  const isLoggedIn = useCheckLogin();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/auth");
+    }
+  }, [navigate]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,

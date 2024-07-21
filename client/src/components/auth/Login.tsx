@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = auth.login(email, password);
+      const response = auth.login(email, password, setUser);
       console.log("Login Successful:", response);
       setUser({ email });
       navigate("/user-form");
