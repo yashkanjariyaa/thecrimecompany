@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCheckLogin } from "../hooks/checkLogIn";
+import { useUser } from "../context/UserContext";
 import "../assets/css/form.css";
 
 const Form = () => {
@@ -12,11 +12,11 @@ const Form = () => {
     address: "",
   });
   const navigate = useNavigate();
-  const isNotLoggedIn = useCheckLogin();
+  const { isLoggedIn } = useUser();
 
   useEffect(() => {
-    console.log("from component",isNotLoggedIn);
-    if (isNotLoggedIn) {
+    console.log("from component", isLoggedIn);
+    if (!isLoggedIn) {
       navigate("/auth");
     }
   }, [navigate]);

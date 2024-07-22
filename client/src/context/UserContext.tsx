@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
@@ -9,10 +9,6 @@ export const useUser = (): UserContextType => {
   }
   return context;
 };
-
-interface UserProviderProps {
-  children: ReactNode;
-}
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUserState] = useState<User>({ email: null }); // Initial user state
@@ -26,8 +22,10 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     setUser({ email: null });
   };
 
+  const isLoggedIn = !!user.email && !!localStorage.getItem("token");
+  console.log("from useUser", isLoggedIn);
   return (
-    <UserContext.Provider value={{ user, setUser, logout }}>
+    <UserContext.Provider value={{ user, setUser, logout, isLoggedIn }}>
       {children}
     </UserContext.Provider>
   );

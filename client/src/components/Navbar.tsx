@@ -10,13 +10,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logoWhite from "../assets/images/logo-white.png";
 import auth from "../api/auth";
-import { useCheckLogin } from "../hooks/checkLogIn";
 import { useUser } from "../context/UserContext";
 
 const NavBar = () => {
-  const { user, logout } = useUser();
+  const { user, logout, isLoggedIn } = useUser();
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const isNotLoggedIn = useCheckLogin();
   const navigate = useNavigate();
 
   const toggleDropdown = () => {
@@ -54,7 +52,7 @@ const NavBar = () => {
           <Link className="location" to="/footer">
             <FontAwesomeIcon icon={faLocationDot} />
           </Link>
-          {!isNotLoggedIn ? (
+          {isLoggedIn ? (
             <div className="user-menu" onClick={toggleDropdown}>
               <FontAwesomeIcon icon={faUser} />
               {dropdownVisible && (

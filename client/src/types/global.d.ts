@@ -36,4 +36,23 @@ interface UserContextType {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
   logout: () => void;
+  isLoggedIn: boolean;
+}
+
+interface UserProviderProps {
+  children: ReactNode;
+}
+
+interface Order {
+  id: number;
+  item: string;
+  quantity: number;
+  price: number;
+}
+
+interface UserData {
+  name: string;
+  email: string;
+  contact: string;
+  address: string;
 }
