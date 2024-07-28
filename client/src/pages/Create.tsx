@@ -1,5 +1,4 @@
 import CreateForm from "../components/create/CreateForm";
-import ApparelData from "../types/global";
 // import DisplayModel from "../components/create/DisplayModel";
 import "../assets/css/create.css";
 const Create: React.FC = () => {

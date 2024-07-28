@@ -1,22 +1,21 @@
 // Login.tsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../../context/UserContext";
+import useUser from "../../context/UserContext";
 import auth from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useUser();
   const navigate = useNavigate();
-
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = auth.login(email, password, setUser);
       console.log("Login Successful:", response);
       setUser({ email });
-      navigate("/user-form");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

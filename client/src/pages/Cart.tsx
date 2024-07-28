@@ -1,69 +1,72 @@
 import { useEffect, useState } from "react";
 import "../assets/css/cart.css";
-import ProductToCart from "../types/ProductToCartInterface";
 import { AdvancedImage } from "@cloudinary/react";
 import { CloudinaryImage } from "@cloudinary/url-gen/index";
-import { useUser } from "../context/UserContext";
+import useUser from "../context/UserContext";
 import DisplayUserData from "../components/DisplayUserData";
+import { useNavigate } from "react-router-dom";
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 
 const Cart = () => {
-  const [products, setProducts] = useState<ProductToCart[]>([]);
+  const [items, setItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [userExists, setUserExists] = useState<boolean>(false);
-
-  const { user } = useUser();
+  const navigate = useNavigate();
+  const { userEmail } = useUser();
 
   useEffect(() => {
     const storedProducts = localStorage.getItem("cartProducts");
     if (storedProducts) {
-      const parsedProducts: ProductToCart[] = JSON.parse(storedProducts);
-      setProducts(parsedProducts);
+      const parsedProducts: CartItem[] = JSON.parse(storedProducts);
+      setItems(parsedProducts);
       calculateTotalPrice(parsedProducts);
     }
   }, []);
 
-  const calculateTotalPrice = (products: ProductToCart[]) => {
-    const total = products.reduce((sum, product) => {
-      const price = product.discountBool
-        ? product.discountPrice
-        : product.price;
-      return sum + price * product.quantity;
+  const calculateTotalPrice = (items: CartItem[]) => {
+    const total = items.reduce((sum, item) => {
+      const price = item.product.discountBool
+        ? item.product.discountPrice
+        : item.product.price;
+      return sum + price * item.quantity;
     }, 0);
     setTotalPrice(total);
   };
 
   const handleSizeChange = (id: number, newSize: string) => {
-    const updatedProducts = products.map((product) =>
-      product.id === id ? { ...product, size: newSize } : product
+    const updatedProducts = items.map((item) =>
+      item.product.productId === id ? { ...item, size: newSize } : item
     );
-    setProducts(updatedProducts);
+    setItems(updatedProducts);
     localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
   };
 
   const handleQuantityChange = (id: number, newQuantity: number) => {
-    const updatedProducts = products.map((product) =>
-      product.id === id ? { ...product, quantity: newQuantity } : product
+    const updatedProducts = items.map((item) =>
+      item.product.productId === id ? { ...item, quantity: newQuantity } : item
     );
-    setProducts(updatedProducts);
+    setItems(updatedProducts);
     localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
     calculateTotalPrice(updatedProducts);
   };
 
   const handleRemoveProduct = (id: number) => {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
+    const updatedProducts = items.filter(
+      (item) => item.product.productId !== id
+    );
+    setItems(updatedProducts);
     localStorage.setItem("cartProducts", JSON.stringify(updatedProducts));
     calculateTotalPrice(updatedProducts);
   };
 
   useEffect(() => {
-    setUserExists(user ? true : false);
+    setUserExists(userEmail ? true : false);
   });
 
-  const handleBuyNow = () => {
+  const handleCheckout = () => {
     alert("Proceeding to checkout");
+    navigate("/checkout");
   };
 
   return (
@@ -77,45 +80,52 @@ const Cart = () => {
       </div>
       <div className="cart-container">
         <div className="left-container">
-          {products.length === 0 ? (
+          {items.length === 0 ? (
             <p className="empty-cart">Your cart is empty</p>
           ) : (
             <div className="product-list">
-              {products.map((product) => {
-                const img = new CloudinaryImage(product.url, {
+              {items.map((item, index) => {
+                const img = new CloudinaryImage(item.product.url, {
                   cloudName: cloudinaryCloudName,
                 });
                 return (
-                  <div className="product-item" key={product.id}>
+                  <div className="product-item" key={index}>
                     <div className="product-image">
                       <AdvancedImage cldImg={img} />
                     </div>
                     <div className="info-col">
                       <div className="info">
-                        <div className="name">{product.name}</div>
+                        <div className="name">{item.product.name}</div>
                         <button
                           className="remove-button"
-                          onClick={() => handleRemoveProduct(product.id)}
+                          onClick={() =>
+                            handleRemoveProduct(item.product.productId)
+                          }
                         >
                           &times;
                         </button>
                         <div className="info-section">
                           <div className="label">Description</div>
                           <div className="description">
-                            {product.description}
+                            {item.product.description}
                           </div>
                         </div>
                         <div className="info-section">
                           <div className="label">Collection</div>
-                          <div className="collection">{product.collection}</div>
+                          <div className="collection">
+                            {item.product.collection}
+                          </div>
                         </div>
                         <div className="info-section">
                           <div className="label">Size</div>
                           <select
                             className="size-select"
-                            value={product.size}
+                            value={item.size}
                             onChange={(e) =>
-                              handleSizeChange(product.id, e.target.value)
+                              handleSizeChange(
+                                item.product.productId,
+                                e.target.value
+                              )
                             }
                           >
                             <option value="" disabled>
@@ -132,10 +142,10 @@ const Cart = () => {
                           <input
                             type="number"
                             className="quantity-select"
-                            value={product.quantity}
+                            value={item.quantity}
                             onChange={(e) =>
                               handleQuantityChange(
-                                product.id,
+                                item.product.productId,
                                 Number(e.target.value)
                               )
                             }
@@ -145,9 +155,9 @@ const Cart = () => {
                       </div>
                       <div className="product-price">
                         Price: ₹
-                        {product.discountBool
-                          ? product.discountPrice
-                          : product.price}
+                        {item.product.discountBool
+                          ? item.product.discountPrice
+                          : item.product.price}
                       </div>
                     </div>
                   </div>
@@ -161,8 +171,8 @@ const Cart = () => {
           <div className="total-price">
             Total Price: ₹{totalPrice.toFixed(2)}
           </div>
-          {products.length > 0 && (
-            <button className="buy-now-button" onClick={handleBuyNow}>
+          {items.length > 0 && (
+            <button className="buy-now-button" onClick={handleCheckout}>
               Checkout
             </button>
           )}

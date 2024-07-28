@@ -1,4 +1,4 @@
-import axiosInstance from "./instances/axiosInstance";
+import axiosInstance from "./instances/axiosInstanceWithToken";
 const baseURLOrder = "/api/order";
 
 const getOrders = async (orderId: string) => {

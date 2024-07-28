@@ -1,32 +1,50 @@
-import React, { createContext, useContext, useState } from "react";
+import { useState, useEffect } from "react";
 
-const UserContext = createContext<UserContextType | undefined>(undefined);
+interface UserEmail {
+  email: string | null;
+}
 
-export const useUser = (): UserContextType => {
-  const context = useContext(UserContext);
-  if (!context) {
-    throw new Error("useUser must be used within a UserProvider");
-  }
-  return context;
+interface UserContextType {
+  userEmail: UserEmail;
+  setUser: (email: UserEmail) => void;
+  logout: () => void;
+  isLoggedIn: boolean;
+}
+
+const LOCAL_STORAGE_KEY = "userEmail";
+const TOKEN_KEY = "token";
+
+const getUserEmailFromLocalStorage = (): UserEmail => {
+  const storedEmail = localStorage.getItem(LOCAL_STORAGE_KEY);
+  return { email: storedEmail ? JSON.parse(storedEmail) : null };
 };
 
-export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [user, setUserState] = useState<User>({ email: null }); // Initial user state
+const setUserEmailToLocalStorage = (email: string | null) => {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(email));
+};
 
-  const setUser: React.Dispatch<React.SetStateAction<User>> = (user) => {
-    console.log("Setting user:", user);
-    setUserState(user);
+const useUser = (): UserContextType => {
+  const [userEmail, setUserEmailState] = useState<UserEmail>(
+    getUserEmailFromLocalStorage()
+  );
+
+  useEffect(() => {
+    setUserEmailState(getUserEmailFromLocalStorage());
+  }, []);
+
+  const setUser = (email: UserEmail) => {
+    setUserEmailState(email);
+    setUserEmailToLocalStorage(email.email);
   };
 
   const logout = () => {
     setUser({ email: null });
+    localStorage.removeItem(TOKEN_KEY);
   };
 
-  const isLoggedIn = !!user.email && !!localStorage.getItem("token");
-  console.log("from useUser", isLoggedIn);
-  return (
-    <UserContext.Provider value={{ user, setUser, logout, isLoggedIn }}>
-      {children}
-    </UserContext.Provider>
-  );
+  const isLoggedIn = !!userEmail.email && !!localStorage.getItem(TOKEN_KEY);
+
+  return { userEmail, setUser, logout, isLoggedIn };
 };
+
+export default useUser;

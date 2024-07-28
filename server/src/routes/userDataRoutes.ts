@@ -3,12 +3,12 @@ import userDataController from "../controllers/userDataController";
 
 const userDataRouter = Router();
 
-userDataRouter.post("/register", userDataController.StoreUserData);
+userDataRouter.post("/", userDataController.StoreUserData);
 
-userDataRouter.get("/retrieve", userDataController.RetreiveUserData);
+userDataRouter.get("/", userDataController.RetrieveUserData);
 
-userDataRouter.put("/update", userDataController.UpdateUserData);
+userDataRouter.put("/", userDataController.UpdateUserData);
 
-userDataRouter.delete("/delete", userDataController.DeleteUserData);
+userDataRouter.delete("/", userDataController.DeleteUserData);
 
 export default userDataRouter;

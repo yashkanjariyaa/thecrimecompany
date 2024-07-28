@@ -28,12 +28,12 @@ interface CartItem {
   size: string;
 }
 
-interface User {
+interface UserEmail {
   email: string | null;
 }
 
 interface UserContextType {
-  user: User;
+  userEmail: UserEmail;
   setUser: React.Dispatch<React.SetStateAction<User>>;
   logout: () => void;
   isLoggedIn: boolean;
@@ -52,7 +52,8 @@ interface Order {
 
 interface UserData {
   name: string;
+  age: number;
   email: string;
-  contact: string;
+  mobile: string;
   address: string;
 }

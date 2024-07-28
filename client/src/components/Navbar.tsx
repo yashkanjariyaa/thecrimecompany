@@ -10,10 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logoWhite from "../assets/images/logo-white.png";
 import auth from "../api/auth";
-import { useUser } from "../context/UserContext";
+import useUser from "../context/UserContext";
 
 const NavBar = () => {
-  const { user, logout, isLoggedIn } = useUser();
+  const { userEmail, logout, isLoggedIn } = useUser();
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
-    auth.logout(user, logout);
+    auth.logout(userEmail.email ?? "", logout);
     navigate("/");
     console.log("User logged out");
   };

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import userDataModel from "../models/userDataModel";
 
 const StoreUserData = async (req: Request, res: Response) => {
+  console.log(req.body);
   try {
     const user = new userDataModel(req.body);
     await user.save();
@@ -11,9 +12,9 @@ const StoreUserData = async (req: Request, res: Response) => {
   }
 };
 
-const RetreiveUserData = async (req: Request, res: Response) => {
+const RetrieveUserData = async (req: Request, res: Response) => {
   try {
-    const user = await userDataModel.findById(req.query.id);
+    const user = await userDataModel.findOne({ email: req.query.email });
     if (!user) {
       return res.status(404).send({ message: "User not found" });
     }
@@ -62,7 +63,7 @@ const DeleteUserData = async (req: Request, res: Response) => {
 
 export default {
   StoreUserData,
-  RetreiveUserData,
+  RetrieveUserData,
   UpdateUserData,
   DeleteUserData,
 };

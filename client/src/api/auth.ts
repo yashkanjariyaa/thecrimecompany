@@ -1,4 +1,4 @@
-import axiosInstanceForAuth from "./instances/axiosInstanceForAuth";
+import axiosInstance from "./instances/axiosInstance";
 
 const baseURLAuth = "/api/auth";
 
@@ -8,7 +8,7 @@ const login = async (
   setUser: (user: { email: string }) => void
 ): Promise<any> => {
   try {
-    const response = await axiosInstanceForAuth.post(`${baseURLAuth}/login`, {
+    const response = await axiosInstance.post(`${baseURLAuth}/login`, {
       email,
       password,
     });
@@ -16,16 +16,18 @@ const login = async (
     setUser({ email });
     return response.data;
   } catch (error) {
+    window.alert("Invalid email or password");
+    console.log(error);
     throw error;
   }
 };
 
-const logout = async (user: User, logout: () => void): Promise<any> => {
+const logout = async (email: string, logout: () => void): Promise<any> => {
   try {
     logout();
-    const response = await axiosInstanceForAuth.post(`${baseURLAuth}/logout`);
+    const response = await axiosInstance.post(`${baseURLAuth}/logout`);
     localStorage.removeItem("token");
-    window.alert(`${user.email} logged out`);
+    window.alert(`${email} logged out`);
     return response.data;
   } catch (error) {
     throw error;
@@ -38,7 +40,7 @@ const signup = async (
   setUser: (user: { email: string }) => void
 ): Promise<any> => {
   try {
-    const response = await axiosInstanceForAuth.post(`${baseURLAuth}/signup`, {
+    const response = await axiosInstance.post(`${baseURLAuth}/signup`, {
       email,
       password,
     });

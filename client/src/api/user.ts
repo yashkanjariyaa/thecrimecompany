@@ -1,29 +1,28 @@
-import axiosInstance from "./instances/axiosInstance";
+import axiosInstance from "./instances/axiosInstanceWithToken";
 const baseURLUser = "/api/user";
 
-const getUserData = async (id: string) => {
+const getUserData = async (email: string) => {
   try {
-    const response = await axiosInstance.get(`${baseURLUser}?id=${id}`);
+    if (email === null) {
+      throw new Error("Email is null");
+    }
+    const response = await axiosInstance.get(
+      `${baseURLUser}?email=${email}`
+    );
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-const createUser = async (
-  name: string,
-  email: string,
-  mobile: string,
-  address: string,
-  age: number
-) => {
+const createUser = async (userData: UserData) => {
   try {
     const response = await axiosInstance.post(baseURLUser, {
-      name,
-      email,
-      mobile,
-      address,
-      age,
+      name: userData.name,
+      age: userData.age,
+      email: userData.email,
+      mobile: userData.mobile,
+      address: userData.address,
     });
     return response.data;
   } catch (error) {
@@ -45,7 +44,9 @@ const updateUserData = async (id: string, updates: any) => {
 
 const deleteUser = async (id: string) => {
   try {
-    const response = await axiosInstance.delete(`${baseURLUser}?id=${id}`);
+    const response = await axiosInstance.delete(
+      `${baseURLUser}?id=${id}`
+    );
     return response.data;
   } catch (error) {
     throw error;
