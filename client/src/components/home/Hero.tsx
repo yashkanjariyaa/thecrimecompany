@@ -1,8 +1,8 @@
 import "../../assets/css/hero.css";
 import { Link } from "react-router-dom";
 // import Carousel from "./Carousel.tsx";
-import img1 from "../../assets/images/img1.jpeg";
-import img2 from "../../assets/images/img2.jpeg";
+import img1 from "../../assets/images/3.png";
+import img2 from "../../assets/images/ethnic blue.png";
 
 const Hero = () => {
   return (

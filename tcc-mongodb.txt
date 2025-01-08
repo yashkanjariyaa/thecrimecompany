@@ -1,0 +1,3 @@
+thecrimecompanywe
+Q49zxCBry9FrydmM
+mongodb+srv://thecrimecompanywe:Q49zxCBry9FrydmM@cluster0.hnojgfc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
